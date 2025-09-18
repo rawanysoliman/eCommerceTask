@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">eCommerce</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" routerLink="/products" routerLinkActive="active">Products</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ng-container *ngIf="(auth.authState$ | async) as authState; else loggedOut">
+          <li class="nav-item">
+            <span class="navbar-text me-2">Hi, {{ auth.displayName || 'User' }}</span>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-light btn-sm" (click)="onLogout()">Logout</button>
+          </li>
+        </ng-container>
+        <ng-template #loggedOut>
+          <li class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a></li>
+        </ng-template>
+      </ul>
+      </div>
+    </div>
+  
+</nav>
+
+<div class="container py-4">
+  <router-outlet></router-outlet>
+  
+  </div>
+
+<app-toasts></app-toasts>
+
+
+

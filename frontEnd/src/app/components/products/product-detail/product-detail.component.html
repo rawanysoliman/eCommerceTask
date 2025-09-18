@@ -1,0 +1,19 @@
+<div class="container mt-4" *ngIf="product as p">
+  <div class="row">
+    <div class="col-md-5">
+      <img [src]="buildImageUrl(p.imageUrl)" class="img-fluid rounded" alt="{{p.name}}" />
+    </div>
+    <div class="col-md-7">
+      <h3>{{ p.name }}</h3>
+      <div class="h5">{{ p.price | currency }}</div>
+      <div class="mt-3" *ngIf="auth.isAdmin">
+        <a class="btn btn-outline-primary me-2" [routerLink]="['/admin/products', p.id, 'edit']">Edit</a>
+        <a class="btn btn-outline-light me-2" routerLink="/admin/products/new">Add New</a>
+        <a class="btn btn-outline-danger me-2" routerLink="/admin/products/{{p.id}}/delete">Delete</a>
+        <a class="btn btn-outline-primary me-2" routerLink="/products">Back to List</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
