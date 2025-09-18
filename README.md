@@ -62,6 +62,10 @@ The frontend is configured to call the API at `https://localhost:7010/api`.
 - Auth Interceptor attaches bearer token and, on 401, attempts one refresh then retries
 - Product images resolved against API origin for correct preview
 
+## Troubleshooting
+- If images don’t load, ensure the backend is running and `wwwroot/images/products` contains the files returned by the API (`imageUrl` is relative to the API root).
+- If you get CORS errors, back end allows `http://localhost:4200`. Verify the frontend is served on that origin.
+- If your session expires, the interceptor will attempt a refresh and retry once; otherwise you will be logged out.
 ## Configuration
 
 This project uses an `appsettings.json` file for configuration. ** the real `appsettings.json` is not included in the repository.**
@@ -81,10 +85,6 @@ This project uses an `appsettings.json` file for configuration. ** the real `app
     "ExpirationMinutes": 60
   }
 }
-## Known notes
-- Automated tests (Jest / Cypress) were not included due to time constraints. Manual testing of all features has been done, and the application is fully functional.
 
-## Troubleshooting
-- If images don’t load, ensure the backend is running and `wwwroot/images/products` contains the files returned by the API (`imageUrl` is relative to the API root).
-- If you get CORS errors, back end allows `http://localhost:4200`. Verify the frontend is served on that origin.
-- If your session expires, the interceptor will attempt a refresh and retry once; otherwise you will be logged out.
+
+
