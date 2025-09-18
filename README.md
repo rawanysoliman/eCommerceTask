@@ -62,6 +62,25 @@ The frontend is configured to call the API at `https://localhost:7010/api`.
 - Auth Interceptor attaches bearer token and, on 401, attempts one refresh then retries
 - Product images resolved against API origin for correct preview
 
+## Configuration
+
+This project uses an `appsettings.json` file for configuration. ** the real `appsettings.json` is not included in the repository.**
+
+### Setup
+
+1. Create a new file called `appsettings.example.json` in the `EcommerceSolution/Ecommerce.Api` folder.
+2. Use the following structure as a template (do **not** include real secrets here):
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=YOUR_SERVER;Database=YOUR_DB;User Id=USER;Password=PASSWORD;"
+  },
+  "Jwt": {
+    "Secret": "YOUR_SECRET_KEY",
+    "ExpirationMinutes": 60
+  }
+}
 ## Known notes
 - Automated tests (Jest / Cypress) were not included due to time constraints. Manual testing of all features has been done, and the application is fully functional.
 
